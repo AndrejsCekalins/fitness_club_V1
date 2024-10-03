@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Fitness club demo project">
+    <meta name="author" content="Fitness club team">
+    <title>Fitness Club</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<h3>Member card form filling</h3>
+
+<form action="/memberCardFormFilling" th:object="${request}" method="post">
+    <table>
+        <tr>
+            <td>Client personal code:</td>
+            <td><input type="text" th:field="${request.client}"/></td>
+        </tr>
+        <tr>
+            <td>Age Group:</td>
+            <td>
+                <select th:field="${request.ageGroup}">
+                    <option th:each="ageGroup : ${ageGroups}"
+                            th:value="${ageGroup.id}"
+                            th:text="${ageGroup.ageGroup}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Fitness Center:</td>
+            <td>
+                <select th:field="${request.fitnessCenter}">
+                    <option th:each="fitnessCenter : ${fitnessCenters}"
+                            th:value="${fitnessCenter.id}"
+                            th:text="${fitnessCenter.fitnessCenter}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Workout:</td>
+            <td>
+                <select th:field="${request.workout}">
+                    <option th:each="workout : ${workouts}"
+                            th:value="${workout.id}"
+                            th:text="${workout.workout}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Term of contract:</td>
+            <td><input type="date" th:field="${request.termOfContract}"/></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Member card form filling"/>
+                <input type="reset" value="Clear"/>
+            </td>
+        </tr>
+    </table>
+    <td th:if="${errors != null}">
+        <tr th:each="error : ${errors}">
+            <td th:text="${error.field}"/>
+            <td th:text="${error.message}"/>
+        </tr>
+    </td>
+</form>
+
+<!--<h3>Search criteria (clients and workouts):</h3>-->
+
+<!--<form action="/registeredWorkoutByClient/search" th:object="${searchRequest}" method="post">-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <td>Search by Client First Name:</td>-->
+<!--            <td><input type="text" th:field="${searchRequest.clientFirstName}"/></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>Search by Client Last Name:</td>-->
+<!--            <td><input type="text" th:field="${searchRequest.clientLastName}"/></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>Search by Client Personal Code:</td>-->
+<!--            <td><input type="text" th:field="${searchRequest.clientPersonalCode}"/></td>-->
+<!--        </tr>-->
+
+<!--        <tr>-->
+<!--            <td>Search by Workout:</td>-->
+<!--            <td><input type="text" th:field="${searchRequest.workoutTitle}"/></td>-->
+<!--        </tr>-->
+<!--        </tr>-->
+<!--        <td>-->
+<!--            <input type="submit" value="Search Clients And Workouts"/>-->
+<!--            <input type="reset" value="Clear"/>-->
+<!--        </td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--</form>-->
+
+<!--<h3>Search results (clients):</h3>-->
+
+<!--<table>-->
+<!--    <tr>-->
+<!--        <td>ID:</td>-->
+<!--        <td>First Name:</td>-->
+<!--        <td>Last Name:</td>-->
+<!--    </tr>-->
+
+<!--    <td th:if="${clients != null}">-->
+<!--        <tr th:each="client : ${clients}">-->
+<!--    <td th:text="${client.id}"/>-->
+<!--    <td th:text="${client.firstName}"/>-->
+<!--    <td th:text="${client.lastName}"/>-->
+<!--    </tr>-->
+<!--    </td>-->
+
+<!--</table>-->
+
+<!--<h3>Search results (workouts):</h3>-->
+
+<!--<table>-->
+<!--    <tr>-->
+<!--        <td>ID:</td>-->
+<!--        <td>Workout:</td>-->
+<!--    </tr>-->
+
+<!--    <td th:if="${workouts != null}">-->
+<!--        <tr th:each="workout : ${workouts}">-->
+<!--    <td th:text="${workout.id}"/>-->
+<!--    <td th:text="${workout.workout}"/>-->
+<!--    </tr>-->
+<!--    </td>-->
+
+<!--</table>-->
+
+
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit"/>
+</form>
+
+
+</body>
+
+</html>

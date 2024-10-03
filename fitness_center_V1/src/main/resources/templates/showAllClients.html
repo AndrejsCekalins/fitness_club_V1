@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Fitness club demo project">
+    <meta name="author" content="Fitness club team">
+    <title>Fitness Club</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+<h3>Show all clients in the list</h3>
+
+<table>
+    <tr>
+        <td>Id:</td>
+        <td>First name:</td>
+        <td>Last name:</td>
+        <td>Personal code:</td>
+    </tr>
+
+    <tr th:if="${clients != null}" th:each="client : ${clients}">
+        <td th:text=" ${client.id}">
+        <td th:text=" ${client.firstName}">
+        <td th:text=" ${client.lastName}">
+        <td th:text=" ${client.personalCode}">
+    </tr>
+
+</table>
+
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit"/>
+</form>
+
+</body>
+
+</html>

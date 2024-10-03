@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Fitness club demo project">
+    <meta name="author" content="Fitness club team">
+    <title>Fitness Club</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+<h3>Search clients</h3>
+
+<table>
+    <tr>
+        <td>Search by First Name:</td>
+        <td>Search by Last Name:</td>
+        <td>Search by Personal Code:</td>
+        <td></td>
+    </tr>
+    <tr>
+        <form action="/searchClients" th:object="${request}" method="post">
+            <td><input type="text" th:field="${request.firstName}" /></td>
+            <td><input type="text" th:field="${request.lastName}" /></td>
+            <td><input type="text" th:field="${request.personalCode}" /></td>
+            <td>
+                <input type="submit" value="Search clients" />
+                <input type="reset" value="Clear" />
+            </td>
+        </form>
+    </tr>
+</table>
+
+<h3>Search results:</h3>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Personal Code</th>
+    </tr>
+
+    <tr th:if="${clients != null}" th:each="client : ${clients}">
+        <td th:text="${client.id}"></td>
+        <td th:text="${client.firstName}"></td>
+        <td th:text="${client.lastName}"></td>
+        <td th:text="${client.personalCode}"></td>
+    </tr>
+</table>
+
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit" />
+</form>
+
+<table>
+    <tr th:if="${errors != null}" th:each="error : ${errors}">
+        <td th:text="${error.field}"></td>
+        <td th:text="${error.message}"></td>
+    </tr>
+</table>
+
+</body>
+
+</html>

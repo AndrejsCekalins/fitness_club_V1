@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Fitness club demo project">
+    <meta name="author" content="Fitness club team">
+    <title>Fitness Club</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+<h3>Show all member cards</h3>
+
+<table>
+    <tr>
+        <td>Id:</td>
+        <td>Client First Name:</td>
+        <td>Client Last Name:</td>
+        <td>Client Personal Code:</td>
+        <td>Client Age Group:</td>
+        <td>Fitness Center:</td>
+        <td>Workout:</td>
+        <td>Date Of Contract:</td>
+    </tr>
+
+    <td th:if="${memberCard != null}">
+    <tr th:each="memberCard : ${memberCard}">
+        <td th:text=" ${memberCard.id}">
+        <td th:text=" ${memberCard.client.firstName}">
+        <td th:text=" ${memberCard.client.lastName}">
+        <td th:text=" ${memberCard.client.personalCode}">
+        <td th:text=" ${memberCard.ageGroup.ageGroup}">
+        <td th:text=" ${memberCard.fitnessCenter.fitnessCenter}">
+        <td th:text=" ${memberCard.workout.workout}">
+        <td th:text=" ${memberCard.termOfContract}">
+    </tr>
+    </td>
+
+</table>
+
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit"/>
+</form>
+
+</body>
+
+</html>

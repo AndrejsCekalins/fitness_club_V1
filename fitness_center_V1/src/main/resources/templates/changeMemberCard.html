@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Fitness club demo project">
+    <meta name="author" content="Fitness club team">
+    <title>Fitness Club</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+<h3>Change member card</h3>
+
+<form action="/updateMemberCardForm" th:object="${request}" method="post">
+    <table>
+        <tr>
+            <td>Member card id:</td>
+            <td><input type="text" th:field="${request.id}"/></td>
+        </tr>
+        <tr>
+            <td>Client personal code:</td>
+            <td><input type="text" th:field="${request.newClient}"/></td>
+        </tr>
+        <tr>
+            <td>Age Group:</td>
+            <td>
+                <select th:field="${request.newAgeGroup}">
+                    <option th:each="ageGroup : ${ageGroups}"
+                            th:value="${ageGroup.id}"
+                            th:text="${ageGroup.ageGroup}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Fitness Center:</td>
+            <td>
+                <select th:field="${request.newFitnessCenter}">
+                    <option th:each="fitnessCenter : ${fitnessCenters}"
+                            th:value="${fitnessCenter.id}"
+                            th:text="${fitnessCenter.fitnessCenter}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Workout:</td>
+            <td>
+                <select th:field="${request.newWorkout}">
+                    <option th:each="workout : ${workouts}"
+                            th:value="${workout.id}"
+                            th:text="${workout.workout}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Term of contract:</td>
+            <td><input type="date" th:field="${request.newTermOfContract}"/></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Change member card"/>
+                <input type="reset" value="Clear"/>
+            </td>
+        </tr>
+    </table>
+    <td th:if="${errors != null}">
+        <tr th:each="error : ${errors}">
+            <td th:text="${error.field}"/>
+            <td th:text="${error.message}"/>
+        </tr>
+    </td>
+</form>
+
+<form action="/" method="get">
+    <input type="submit" value="Go to main page" name="Submit"/>
+</form>
+
+</body>
+
+</html>
