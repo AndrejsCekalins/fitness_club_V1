@@ -30,7 +30,7 @@ public class SearchClientRequestValidationTest {
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
@@ -48,8 +48,8 @@ public class SearchClientRequestValidationTest {
         when(orderingValidator.validate(ordering)).thenReturn(List.of(error));
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
-        assertEquals(errors.get(0).getField(), "orderBy");
-        assertEquals(errors.get(0).getMessage(), "Must not be empty!");
+        assertEquals(errors.getFirst().getField(), "orderBy");
+        assertEquals(errors.getFirst().getMessage(), "Must not be empty!");
     }
 
     @Test
@@ -76,8 +76,8 @@ public class SearchClientRequestValidationTest {
         when(pagingValidator.validate(paging)).thenReturn(List.of(error));
         List<CoreError> errors = validator.validate(request);
         assertEquals(errors.size(), 1);
-        assertEquals(errors.get(0).getField(), "pageNumber");
-        assertEquals(errors.get(0).getMessage(), "Must not be empty!");
+        assertEquals(errors.getFirst().getField(), "pageNumber");
+        assertEquals(errors.getFirst().getMessage(), "Must not be empty!");
     }
 
     @Test
