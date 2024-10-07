@@ -1,0 +1,8 @@
+Test_case_1:
+Request: client Id exist in Db.
+Response: success, without errors.
+
+Test_case_2:
+Request: client Id not exist in Db.
+Response: field: "id", message: "Such client id not exist!"
+

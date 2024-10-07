@@ -1,0 +1,11 @@
+Test_case_1:
+Request: correct personalCode.
+Response: success, without errors.
+
+Test_case_2:
+Request: personalCode is empty.
+Response: multiple error codes
+
+Test_case_3:
+Request: personalCode not exist.
+Response: field: "personalCode", message: "Personal code not exist!"

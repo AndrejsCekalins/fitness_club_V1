@@ -1,0 +1,17 @@
+{
+  "errors": [
+    {
+      "field": "newFirstName",
+      "message": "Must not be empty or contain symbols!"
+    },
+    {
+      "field": "newLastName",
+      "message": "Must not be empty or contain symbols!"
+    },
+    {
+      "field": "newPersonalCode",
+      "message": "Must not be empty!"
+    }
+  ],
+  "updateClient": null
+}

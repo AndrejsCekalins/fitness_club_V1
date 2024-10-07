@@ -1,0 +1,9 @@
+{
+  "errors": [
+    {
+      "field": "newPersonalCode",
+      "message": "Must not be empty!"
+    }
+  ],
+  "updateClient": null
+}

@@ -1,0 +1,35 @@
+Test_case_1:
+Request: all fields filled.
+Response: success, without errors.
+
+Test_case_2:
+Request: firstName is null.
+Response: field: "newFirstName", message: ""Must not be empty or contain symbols!"
+
+Test_case_3:
+Request: firstName is empty.
+Response: field: "newFirstName", message: ""Must not be empty or contain symbols!"
+
+Test_case_4:
+Request: lastName is null.
+Response: field: "newLastName", message: ""Must not be empty or contain symbols!"
+
+Test_case_5:
+Request: lastName is empty.
+Response: field: "newLastName", message: ""Must not be empty or contain symbols!"
+
+Test_case_6:
+Request: personalCode is null.
+Response: field: "newPersonalCode", message: "Must not be empty!"
+
+Test_case_7:
+Request: personalCode is null.
+Response: field: "newPersonalCode", message: "Must not be empty!"
+
+Test_case_8:
+Request: all fields not provided.
+Response: multiple error codes.
+
+Test_case_9:
+Request: client id not exist in Db.
+Response: field: "id", message: "Not found!"

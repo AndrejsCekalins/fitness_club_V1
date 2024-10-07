@@ -1,0 +1,15 @@
+{
+  "errors":
+  [
+    {
+      "field":"personalCode",
+      "message":"Must not be empty!"
+    },
+    {
+      "field":"personalCode",
+      "message":"Personal code not exist!"
+    }
+  ],
+  "removeClient":false,
+  "clientRemoved":false
+}

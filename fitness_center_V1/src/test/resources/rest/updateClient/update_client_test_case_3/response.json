@@ -1,0 +1,9 @@
+{
+  "errors": [
+    {
+      "field": "newFirstName",
+      "message": "Must not be empty or contain symbols!"
+    }
+  ],
+  "updateClient": null
+}
